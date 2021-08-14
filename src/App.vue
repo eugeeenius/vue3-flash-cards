@@ -5,9 +5,9 @@
 </template>
 
 <script>
-    import DefaultLayout from '@/layouts/default';
+import DefaultLayout from '@/layouts/default.vue';
 
-    export default {
-        components: {DefaultLayout}
-    }
+export default {
+    components: { DefaultLayout },
+};
 </script>

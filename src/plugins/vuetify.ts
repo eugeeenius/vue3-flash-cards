@@ -16,7 +16,7 @@ export default createVuetify({
                     primary: colors.indigo.lighten1,
                     secondary: colors.indigo.lighten5,
                     accent: colors.indigo.lighten3,
-                }
+                },
             },
         },
     },

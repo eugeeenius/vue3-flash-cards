@@ -14,11 +14,11 @@ module.exports = {
     rules: {
         'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-        'indent': [
+        indent: [
             'error',
             4,
             {
-                'SwitchCase': 1,
+                SwitchCase: 1,
             },
         ],
     },
