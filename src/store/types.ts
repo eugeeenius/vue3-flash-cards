@@ -1,3 +1,3 @@
 export interface RootState {
-    darkMode: boolean
+    darkMode: boolean;
 }

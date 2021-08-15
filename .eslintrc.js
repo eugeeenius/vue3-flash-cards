@@ -21,5 +21,6 @@ module.exports = {
                 SwitchCase: 1,
             },
         ],
+        'import/prefer-default-export': 'off',
     },
 };

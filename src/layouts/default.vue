@@ -23,7 +23,7 @@
 <script lang="ts">
 import { mapActions } from 'vuex';
 import { defineComponent } from 'vue';
-import Navbar from '@/components/layout/Navbar.vue';
+import Navbar from '@/components/layout/navbar/Navbar.vue';
 
 export default defineComponent({
     name: 'DefaultLayout',
