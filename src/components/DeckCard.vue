@@ -1,11 +1,13 @@
 <template>
     <v-card class="DeckCard">
-        <v-card-header-text>{{ deck.title }}</v-card-header-text>
+        <v-card-header-text class="px-4">{{ deck.title }}</v-card-header-text>
+        <v-divider />
     </v-card>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
+
 import { Deck } from '@/models/Deck';
 
 export default defineComponent({

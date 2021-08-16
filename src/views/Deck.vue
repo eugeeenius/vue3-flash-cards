@@ -7,11 +7,11 @@
 import {
     computed,
     ComputedRef,
-    defineComponent, PropType,
+    defineComponent,
     ref,
     watch,
 } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 
 import { Deck } from '@/models/Deck';
@@ -25,19 +25,17 @@ export default defineComponent({
         const store = useStore();
         const route = useRoute();
 
-        const deck = ref<Deck | undefined>();
+        const getDeckFromStore = (id: number | string): ComputedRef<Deck | undefined> => computed(() => store.getters['decks/getDeckById'](id));
 
-        const getDeckFromStore = function getDeckById(id: number | string):
-            ComputedRef<Deck | undefined> {
-            return computed(() => store.getters['decks/getDeckById'](id));
-        };
+        const deckId = computed(() => Number(route.params.id));
 
-        watch(() => route.params.id, (newValue) => {
-            deck.value = getDeckFromStore(Number(newValue)).value;
+        const deck = ref<Deck | undefined >(getDeckFromStore(deckId.value).value);
+
+        watch(() => deckId.value, (newValue) => {
+            deck.value = getDeckFromStore(newValue).value;
         });
 
         return { deck };
     },
-
 });
 </script>

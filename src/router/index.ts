@@ -1,4 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import store from '@/store/index';
+
+const defaultId: string = store.getters['decks/getNavbarDecksList'][0].id;
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -7,8 +10,13 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/Home.vue'),
     },
     {
-        path: '/decks/:id',
+        path: '/deck',
+        redirect: { name: 'DeckDetail', params: { id: defaultId } },
         name: 'Deck',
+    },
+    {
+        path: '/deck/:id',
+        name: 'DeckDetail',
         component: () => import('@/views/Deck.vue'),
     },
 ];

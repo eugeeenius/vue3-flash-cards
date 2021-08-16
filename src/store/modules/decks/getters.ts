@@ -8,7 +8,7 @@ export const getters: GetterTree<DecksState, RootState> = {
         return state.decks.map((deck) => ({
             id: deck.id,
             title: deck.title,
-            route: `/decks/${deck.id}`,
+            route: `/deck/${deck.id}`,
         }));
     },
 
