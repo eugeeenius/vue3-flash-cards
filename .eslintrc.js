@@ -22,5 +22,6 @@ module.exports = {
             },
         ],
         'import/prefer-default-export': 'off',
+        'max-len': 'off',
     },
 };
