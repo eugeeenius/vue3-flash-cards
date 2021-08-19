@@ -1,20 +1,22 @@
 <template>
     <div v-if="isDeckListEmpty">Decks List is empty</div>
-    <DeckCard v-else-if="deck" :deck="deck" />
-    <div v-else>Deck not found</div>
+
+    <template v-else>
+        <DeckCard
+            v-for="deck in decks"
+            :key="deck.id"
+            :deck="deck"
+        />
+    </template>
 </template>
 
 <script lang="ts">
 import {
     computed,
     defineComponent,
-    ref,
-    watch,
 } from 'vue';
-import { useRoute } from 'vue-router';
-import { useStore } from 'vuex';
 
-import { Deck } from '@/models/Deck';
+import { useStore } from 'vuex';
 
 import DeckCard from '@/components/DeckCard.vue';
 
@@ -23,28 +25,10 @@ export default defineComponent({
 
     setup() {
         const store = useStore();
-        const route = useRoute();
-
-        const isDeckListEmpty = computed(() => store.getters['decks/isDecksListEmpty']).value;
-        const deck = ref<Deck | undefined>();
-
-        if (isDeckListEmpty) {
-            return {
-                deck,
-                isDeckListEmpty,
-            };
-        }
-
-        const deckId = computed(() => Number(route.params.id));
-        deck.value = computed(() => store.getters['decks/getDeckById'](deckId.value)).value;
-
-        watch(() => deckId.value, (newValue) => {
-            deck.value = computed(() => store.getters['decks/getDeckById'](newValue)).value;
-        });
 
         return {
-            deck,
-            isDeckListEmpty,
+            isDeckListEmpty: computed(() => store.getters['decks/isDecksListEmpty']),
+            decks: computed(() => store.getters['decks/getDecksList']),
         };
     },
 });

@@ -11,3 +11,9 @@ export default {
     components: { DefaultLayout },
 };
 </script>
+
+<style lang="less">
+    * {
+        outline: none;
+    }
+</style>
