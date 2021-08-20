@@ -1,0 +1,8 @@
+.bottom-appear-enter-active, .bottom-appear-leave-active {
+  transition: all .3s;
+}
+
+.bottom-appear-enter-from, .bottom-appear-leave-to {
+  opacity: 0;
+  transform: translateY(110%);
+}
