@@ -59,8 +59,7 @@ export default defineComponent({
 
 <style lang="less" scoped>
     .DeckCard {
-        width: 52vw;
-        margin: 6vh auto auto;
+        width: 100%;
         border-radius: 20px;
     }
 
