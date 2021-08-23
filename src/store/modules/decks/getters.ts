@@ -4,7 +4,7 @@ import { RootState } from '@/store/types';
 import { Deck } from '@/models/Deck';
 
 export const getters: GetterTree<DecksState, RootState> = {
-    getDecksList(state): Deck[] | [] {
+    getDecksList(state): Deck[] {
         return state.decks;
     },
 
@@ -12,7 +12,7 @@ export const getters: GetterTree<DecksState, RootState> = {
         return !state.decks.length;
     },
 
-    getNavbarDecksList(state): Deck[] | [] {
+    getNavbarDecksList(state): Deck[] {
         return state.decks.map((deck) => ({
             ...deck,
             route: `/deck/${deck.id}`,

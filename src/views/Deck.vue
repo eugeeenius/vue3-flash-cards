@@ -11,7 +11,7 @@
                         <input v-model="text"
                                type="text"
                                class="pa-0 px-6"
-                               @change="onInput">
+                               @input="onInput">
                     </div>
 
                     <div class="v-input__outline"></div>
@@ -64,7 +64,7 @@ export default defineComponent({
         const filteredDecks = ref<Deck[]>(decks.value);
         const text = ref<string>('');
 
-        const filterDecks = (e: Event) => {
+        const filterDecks = (e: Event): void => {
             filteredDecks.value = [];
 
             setTimeout(() => {
@@ -87,10 +87,10 @@ export default defineComponent({
 
         return {
             isDeckListEmpty: computed(() => store.getters['decks/isDecksListEmpty']),
-            onInput: filterDecks,
-            clearSearch,
             filteredDecks,
             text,
+            onInput: filterDecks,
+            clearSearch,
         };
     },
 });
