@@ -16,7 +16,7 @@
                 v-for="item in items"
                 :key="item.title"
                 :item="item"
-                @click="toggleDialog(item.group)"
+                @click="handleClick(item.action)"
             />
         </v-list>
     </v-navigation-drawer>
@@ -36,41 +36,33 @@ export default defineComponent({
     components: { NavbarMenuItem },
 
     setup() {
+        const drawer = ref<boolean>(false);
+
+        function handleClick(action: () => void) {
+            if (!action) return;
+            action();
+        }
+
+        function createDeck() {
+            console.log('create');
+        }
+
         const items: MenuItem[] = [
             {
                 title: 'Decks',
-                route: '/deck',
+                route: '/deck/',
             },
             {
                 title: 'Create Deck',
                 icon: 'mdi-card-plus',
-                route: '/create',
+                action: createDeck,
             },
         ];
 
-        const dialogItems = ref<MenuItem[] | null>(null);
-        const isDialogOpen = ref<boolean>(false);
-
-        const toggleDialog = (group: MenuItem[] | undefined) => {
-            if (group === undefined) {
-                isDialogOpen.value = false;
-                return;
-            }
-            dialogItems.value = group;
-            isDialogOpen.value = true;
-        };
-
         return {
+            drawer,
             items,
-            dialogItems,
-            isDialogOpen,
-            toggleDialog,
-        };
-    },
-
-    data() {
-        return {
-            drawer: false,
+            handleClick,
         };
     },
 
