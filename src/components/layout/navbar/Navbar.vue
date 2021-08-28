@@ -20,41 +20,26 @@
             />
         </v-list>
     </v-navigation-drawer>
-
-    <NavbarSelectDialog :is-open="isDialogOpen"
-                        @on-close="toggleDialog">
-        <v-list v-if="dialogItems">
-            <NavbarMenuItem
-                v-for="item in dialogItems"
-                :key="item.title"
-                :item="item"
-            />
-        </v-list>
-    </NavbarSelectDialog>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { mapActions, mapGetters, useStore } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
-import { MenuItem } from '@/models/menu/MenuItem';
-import { NestedMenuItem } from '@/models/menu/NestedMenuItem';
+import { MenuItem } from '@/models/MenuItem';
 
 import NavbarMenuItem from '@/components/layout/navbar/NavbarMenuItem.vue';
-import NavbarSelectDialog from '@/components/layout/navbar/NavbarSelectDialog.vue';
 
 export default defineComponent({
     name: 'Navbar',
 
-    components: { NavbarSelectDialog, NavbarMenuItem },
+    components: { NavbarMenuItem },
 
     setup() {
-        const store = useStore();
-
-        const items: (MenuItem|NestedMenuItem)[] = [
+        const items: MenuItem[] = [
             {
                 title: 'Decks',
-                group: store.getters['decks/getNavbarDecksList'],
+                route: '/deck',
             },
             {
                 title: 'Create Deck',

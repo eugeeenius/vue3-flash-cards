@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { MenuItem } from '@/models/menu/MenuItem';
+import { MenuItem } from '@/models/MenuItem';
 
 export default defineComponent({
     name: 'NavbarMenuItem',

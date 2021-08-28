@@ -8,8 +8,8 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
         path: '/deck',
-        name: 'Deck',
-        component: () => import('@/views/Deck.vue'),
+        name: 'DeckList',
+        component: () => import('@/views/DeckList.vue'),
     },
     {
         path: '/deck/:id',
